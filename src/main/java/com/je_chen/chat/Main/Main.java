@@ -1,13 +1,13 @@
-package com.je_chen.websocket.Main;
+package com.je_chen.chat.Main;
 
-import com.je_chen.websocket.Module.WebSocketServerEndPoint;
+import com.je_chen.chat.Module.WebSocketServerEndPoint;
+import com.je_chen.chat.gui.main.MainGUI;
 import org.glassfish.tyrus.server.Server;
 
 import javax.websocket.DeploymentException;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
-import java.util.Arrays;
 
 
 public class Main {
@@ -16,6 +16,7 @@ public class Main {
 
     public static void main(String[] argv) {
         webSocketServerEndPoint = new WebSocketServerEndPoint();
+        MainGUI.getInstance("test");
         Run();
     }
 

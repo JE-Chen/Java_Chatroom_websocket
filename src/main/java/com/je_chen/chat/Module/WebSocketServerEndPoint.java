@@ -1,4 +1,4 @@
-package com.je_chen.websocket.Module;
+package com.je_chen.chat.Module;
 
 import javax.websocket.*;
 import javax.websocket.server.ServerEndpoint;
