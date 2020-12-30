@@ -10,10 +10,9 @@ public class GuiFather extends JFrame {
 
     public GuiFather(String windowName) {
         this.windowName = windowName;
-        setName(windowName);
+        setTitle(windowName);
         setSize(500,500);
         closeEvent();
-
     }
 
     protected void closeEvent() {
@@ -22,6 +21,7 @@ public class GuiFather extends JFrame {
             public void windowClosing(WindowEvent e) {
                 super.windowClosing(e);
                 System.out.println(windowName + " Frame Closed");
+                GuiFather.this.dispose();
             }
         });
     }

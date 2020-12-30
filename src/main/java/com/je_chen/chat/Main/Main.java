@@ -13,8 +13,10 @@ import java.io.InputStreamReader;
 
 public class Main {
 
+    public static MainGUI mainGUI;
+
     public static void main(String[] argv) {
-        Run();
+         mainGUI = new MainGUI("主頁");
     }
 
     public static void Run() {

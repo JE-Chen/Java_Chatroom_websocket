@@ -8,7 +8,7 @@
     <properties/>
     <border type="none"/>
     <children>
-      <component id="6542c" class="javax.swing.JButton" binding="ExitButton">
+      <component id="6542c" class="javax.swing.JButton" binding="exitButton">
         <constraints>
           <grid row="1" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
         </constraints>
@@ -23,18 +23,13 @@
         <properties/>
         <border type="none"/>
         <children>
-          <component id="7afaa" class="javax.swing.JLabel" binding="chatText">
+          <component id="c2538" class="javax.swing.JTextArea" binding="chatText">
             <constraints/>
-            <properties>
-              <horizontalAlignment value="0"/>
-              <horizontalTextPosition value="0"/>
-              <text value="Chat text here"/>
-              <verticalAlignment value="1"/>
-            </properties>
+            <properties/>
           </component>
         </children>
       </scrollpane>
-      <component id="e6e85" class="javax.swing.JTextField" binding="textField1" default-binding="true">
+      <component id="e6e85" class="javax.swing.JTextField" binding="chatTextField">
         <constraints>
           <grid row="1" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="6" anchor="8" fill="1" indent="0" use-parent-layout="false">
             <preferred-size width="150" height="-1"/>
@@ -42,7 +37,7 @@
         </constraints>
         <properties/>
       </component>
-      <component id="701a8" class="javax.swing.JButton" binding="EnterButton">
+      <component id="701a8" class="javax.swing.JButton" binding="enterButton">
         <constraints>
           <grid row="1" column="2" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
         </constraints>
