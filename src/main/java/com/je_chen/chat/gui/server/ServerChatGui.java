@@ -15,7 +15,7 @@ public class ServerChatGui extends GuiFather implements Runnable {
     private JButton enterButton;
     private JTextField chatTextField;
     private final int port;
-    private ChatServer chatServer;
+    private final ChatServer chatServer;
 
     public ServerChatGui(String windowName, int port) {
         super(windowName);

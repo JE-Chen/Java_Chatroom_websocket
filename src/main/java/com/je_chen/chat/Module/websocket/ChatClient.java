@@ -8,7 +8,7 @@ import javax.swing.*;
 import java.net.URI;
 import java.util.Map;
 
-public class ChatClient extends org.java_websocket.client.WebSocketClient {
+public class ChatClient extends org.java_websocket.client.WebSocketClient{
 
     private JTextArea chatText;
 
