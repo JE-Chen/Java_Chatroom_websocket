@@ -14,14 +14,15 @@ import java.net.InetAddress;
 import java.net.SocketException;
 import java.net.UnknownHostException;
 
-public class MainGUI extends GuiFather{
+public class MainGUI extends GuiFather {
     private JPanel jPanel;
     private JButton connectButton;
     private JButton serverButton;
-    private JTextField serverText;
+    private JTextField serverURLText;
     private JLabel serverUrl;
     private JLabel serverPort;
     private JTextField portText;
+    private JTextField serverPortText;
 
     public MainGUI(String windowName) {
         super(windowName);
@@ -31,30 +32,27 @@ public class MainGUI extends GuiFather{
         connectButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                MainGUI.this.setVisible(false);
-                ClientChatGUI clientChatGUI = new ClientChatGUI("連線的聊天室");
+                new Thread(new ClientChatGUI("連線的聊天室", Integer.parseInt(serverPortText.getText()), serverURLText.getText())).start();
             }
         });
 
         serverButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                MainGUI.this.setVisible(false);
                 String ip = "127.0.0.1";
-                try(final DatagramSocket socket = new DatagramSocket()){
+                try (final DatagramSocket socket = new DatagramSocket()) {
                     socket.connect(InetAddress.getByName("8.8.8.8"), 5050);
                     ip = socket.getLocalAddress().getHostAddress();
                 } catch (SocketException | UnknownHostException socketException) {
                     socketException.printStackTrace();
                 }
-                ServerChatGui serverChatGui = new ServerChatGui("開啟的聊天室" + "IP : " + ip);
+                new Thread(new ServerChatGui("開啟的聊天室" + "IP : " + ip, Integer.parseInt(portText.getText()))).start();
             }
         });
-
     }
 
     @Override
-    protected void closeEvent(){
+    protected void closeEvent() {
         this.addWindowListener(new WindowAdapter() {
             @Override
             public void windowClosing(WindowEvent e) {

@@ -1,24 +1,31 @@
 package com.je_chen.chat.Module.websocket;
 
 
-import org.java_websocket.client.WebSocketClient;
 import org.java_websocket.drafts.Draft;
 import org.java_websocket.handshake.ServerHandshake;
 
+import javax.swing.*;
 import java.net.URI;
 import java.util.Map;
 
-public class ClientEndPoint_org_java_websocket extends WebSocketClient{
+public class ChatClient extends org.java_websocket.client.WebSocketClient {
 
-    public ClientEndPoint_org_java_websocket(URI ServerUri, Draft draft) {
+    private JTextArea chatText;
+
+    public ChatClient(URI ServerUri, Draft draft) {
         super(ServerUri, draft);
     }
 
-    public ClientEndPoint_org_java_websocket(URI ServerUri) {
+    public ChatClient(URI ServerUri) {
         super(ServerUri);
     }
 
-    public ClientEndPoint_org_java_websocket(URI ServerUri, Map<String, String> HttpHeaders) {
+    public ChatClient(URI ServerUri, JTextArea chatText) {
+        this(ServerUri);
+        this.chatText = chatText;
+    }
+
+    public ChatClient(URI ServerUri, Map<String, String> HttpHeaders) {
         super(ServerUri, HttpHeaders);
     }
 
@@ -30,7 +37,8 @@ public class ClientEndPoint_org_java_websocket extends WebSocketClient{
 
     @Override
     public void onMessage(String Message) {
-        System.out.println("Received Message : "+ Message);
+        System.out.println("Received Message : " + Message);
+        chatText.append(Message + "\n");
     }
 
     @Override
