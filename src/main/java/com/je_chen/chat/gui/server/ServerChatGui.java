@@ -15,7 +15,7 @@ public class ServerChatGui extends GuiFather implements Runnable {
     private JButton enterButton;
     private JTextField chatTextField;
     private final int port;
-    private ChatServer chatServer;
+    private final ChatServer chatServer;
 
     public ServerChatGui(String windowName, int port) {
         super(windowName);
@@ -31,6 +31,7 @@ public class ServerChatGui extends GuiFather implements Runnable {
                 super.keyPressed(e);
                 if (e.getKeyCode() == KeyEvent.VK_ENTER) {
                     chatServer.broadcast(chatTextField.getText());
+                    chatText.append(chatTextField.getText() + "\n");
                     chatTextField.setText("");
                 }
             }
@@ -40,6 +41,7 @@ public class ServerChatGui extends GuiFather implements Runnable {
             @Override
             public void actionPerformed(ActionEvent e) {
                 chatServer.broadcast(chatTextField.getText());
+                chatText.append(chatTextField.getText() + "\n");
                 chatTextField.setText("");
             }
         });

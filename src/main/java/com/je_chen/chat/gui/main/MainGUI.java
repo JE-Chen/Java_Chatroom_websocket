@@ -32,7 +32,12 @@ public class MainGUI extends GuiFather {
         connectButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                new Thread(new ClientChatGUI("連線的聊天室", Integer.parseInt(serverPortText.getText()), serverURLText.getText())).start();
+                try {
+                    new Thread(new ClientChatGUI("連線的聊天室", Integer.parseInt(serverPortText.getText()), serverURLText.getText())).start();
+                } catch (NumberFormatException exception) {
+                    exception.printStackTrace();
+                    JOptionPane.showMessageDialog(null, "請輸入正確資訊", "InfoBox: ", JOptionPane.INFORMATION_MESSAGE);
+                }
             }
         });
 
@@ -46,7 +51,12 @@ public class MainGUI extends GuiFather {
                 } catch (SocketException | UnknownHostException socketException) {
                     socketException.printStackTrace();
                 }
-                new Thread(new ServerChatGui("開啟的聊天室" + "IP : " + ip, Integer.parseInt(portText.getText()))).start();
+                try {
+                    new Thread(new ServerChatGui("開啟的聊天室" + "IP : " + ip, Integer.parseInt(portText.getText()))).start();
+                } catch (NumberFormatException exception) {
+                    exception.printStackTrace();
+                    JOptionPane.showMessageDialog(null, "請輸入正確資訊", "InfoBox: ", JOptionPane.INFORMATION_MESSAGE);
+                }
             }
         });
     }
