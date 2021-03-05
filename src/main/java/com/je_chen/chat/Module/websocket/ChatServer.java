@@ -75,8 +75,6 @@ public class ChatServer extends WebSocketServer {
     public void onError(WebSocket conn, Exception ex) {
         server.clean();
         ex.printStackTrace();
-        if (conn != null) {
-        }
     }
 
     @Override

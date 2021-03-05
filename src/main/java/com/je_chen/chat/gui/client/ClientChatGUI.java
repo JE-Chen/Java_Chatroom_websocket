@@ -65,17 +65,19 @@ public class ClientChatGUI extends GuiFather implements Runnable {
             public void windowClosing(WindowEvent e) {
                 super.windowClosing(e);
                 System.out.println(windowName + " Frame Closed");
+                client.close();
             }
         });
     }
 
     @Override
     public void run() {
-        client.connect();
         try {
+            client.connect();
             System.out.println("連線至: " + new URI("ws://" + serverURL + ":" + port + "/websocket").toString());
         } catch (URISyntaxException e) {
             e.printStackTrace();
         }
     }
+
 }

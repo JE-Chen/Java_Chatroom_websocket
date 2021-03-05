@@ -4,7 +4,9 @@ import com.je_chen.chat.Module.websocket.ChatServer;
 import com.je_chen.chat.gui.GuiFather;
 
 import javax.swing.*;
+import java.awt.*;
 import java.awt.event.*;
+import java.io.IOException;
 
 
 public class ServerChatGui extends GuiFather implements Runnable {
@@ -61,6 +63,11 @@ public class ServerChatGui extends GuiFather implements Runnable {
             public void windowClosing(WindowEvent e) {
                 super.windowClosing(e);
                 System.out.println(windowName + " Frame Closed");
+                try {
+                    chatServer.stop();
+                } catch (IOException | InterruptedException ioException) {
+                    ioException.printStackTrace();
+                }
             }
         });
     }

@@ -18,11 +18,14 @@ public class MainGUI extends GuiFather {
     private JPanel jPanel;
     private JButton connectButton;
     private JButton serverButton;
-    private JTextField serverURLText;
-    private JLabel serverUrl;
-    private JLabel serverPort;
-    private JTextField portText;
-    private JTextField serverPortText;
+    private JTextField connectServerUrl;
+    private JLabel connectServerUrlText;
+    private JLabel openServerPort;
+    private JTextField OpenServerPort;
+    private JTextField connectServerPort;
+    private JTextField OpenServerUrl;
+    private JLabel openServerUrlText;
+    private JLabel connectServerPortText;
 
     public MainGUI(String windowName) {
         super(windowName);
@@ -33,7 +36,7 @@ public class MainGUI extends GuiFather {
             @Override
             public void actionPerformed(ActionEvent e) {
                 try {
-                    new Thread(new ClientChatGUI("連線的聊天室", Integer.parseInt(serverPortText.getText()), serverURLText.getText())).start();
+                    new Thread(new ClientChatGUI("連線的聊天室", Integer.parseInt(connectServerPort.getText()), connectServerUrl.getText())).start();
                 } catch (NumberFormatException exception) {
                     exception.printStackTrace();
                     JOptionPane.showMessageDialog(null, "請輸入正確資訊", "InfoBox: ", JOptionPane.INFORMATION_MESSAGE);
@@ -45,14 +48,18 @@ public class MainGUI extends GuiFather {
             @Override
             public void actionPerformed(ActionEvent e) {
                 String ip = "127.0.0.1";
-                try (final DatagramSocket socket = new DatagramSocket()) {
-                    socket.connect(InetAddress.getByName("8.8.8.8"), 5050);
-                    ip = socket.getLocalAddress().getHostAddress();
-                } catch (SocketException | UnknownHostException socketException) {
-                    socketException.printStackTrace();
+                if(OpenServerUrl.getText() != null && !OpenServerUrl.getText().equals("")){
+                    ip = OpenServerUrl.getText();
+                }else {
+                    try (final DatagramSocket socket = new DatagramSocket()) {
+                        socket.connect(InetAddress.getByName("8.8.8.8"), 5050);
+                        ip = socket.getLocalAddress().getHostAddress();
+                    } catch (SocketException | UnknownHostException socketException) {
+                        socketException.printStackTrace();
+                    }
                 }
                 try {
-                    new Thread(new ServerChatGui("開啟的聊天室" + "IP : " + ip, Integer.parseInt(portText.getText()))).start();
+                    new Thread(new ServerChatGui("開啟的聊天室" + "IP : " + ip, Integer.parseInt(OpenServerPort.getText()))).start();
                 } catch (NumberFormatException exception) {
                     exception.printStackTrace();
                     JOptionPane.showMessageDialog(null, "請輸入正確資訊", "InfoBox: ", JOptionPane.INFORMATION_MESSAGE);
