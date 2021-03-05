@@ -1,0 +1,9 @@
+<component name="libraryTable">
+  <library name="JEChat">
+    <CLASSES>
+      <root url="jar://$PROJECT_DIR$/out/artifacts/JEChat_jar/JEChat.jar!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES />
+  </library>
+</component>
