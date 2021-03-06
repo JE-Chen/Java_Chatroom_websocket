@@ -2,7 +2,7 @@
   <artifact type="jar" name="JEChat:jar">
     <output-path>$PROJECT_DIR$/out/artifacts/JEChat_jar</output-path>
     <root id="archive" name="JEChat.jar">
-      <element id="module-output" name="T410877027" />
+      <element id="module-output" name="JEChat" />
       <element id="extracted-dir" path="$MAVEN_REPOSITORY$/org/glassfish/grizzly/grizzly-http-server/2.3.3/grizzly-http-server-2.3.3.jar" path-in-jar="/" />
       <element id="extracted-dir" path="$MAVEN_REPOSITORY$/org/glassfish/grizzly/grizzly-framework/2.3.3/grizzly-framework-2.3.3.jar" path-in-jar="/" />
       <element id="extracted-dir" path="$MAVEN_REPOSITORY$/org/slf4j/slf4j-api/1.7.25/slf4j-api-1.7.25.jar" path-in-jar="/" />
