@@ -74,8 +74,6 @@ public class ClientChatGUI extends GuiFather implements Runnable {
     public void run() {
         try {
             client.connect();
-            if (!client.isOpen())
-                JOptionPane.showMessageDialog(null, "未正確連線", "InfoBox: ", JOptionPane.INFORMATION_MESSAGE);
             System.out.println("連線至: " + new URI("ws://" + serverURL + ":" + port + "/websocket").toString());
         } catch (Exception e) {
             e.printStackTrace();

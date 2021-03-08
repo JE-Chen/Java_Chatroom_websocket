@@ -44,10 +44,12 @@ public class ChatClient extends org.java_websocket.client.WebSocketClient{
     @Override
     public void onClose(int code, String Reason, boolean Remote) {
         System.out.println("Connection closed by " + (Remote ? "remote peer" : "us") + " Code: " + code + " Reason: " + Reason);
+        chatText.setText("連線關閉");
     }
 
     @Override
     public void onError(Exception e) {
         e.printStackTrace();
+        chatText.setText("連線失敗");
     }
 }
